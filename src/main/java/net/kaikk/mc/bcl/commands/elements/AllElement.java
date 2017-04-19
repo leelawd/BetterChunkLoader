@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Created by Rob5Underscores on 10/12/2016.
  */
-public class LoaderTypeElement extends CommandElement {
+public class AllElement extends CommandElement {
 
-    public LoaderTypeElement(Text key) {
+    public AllElement(Text key) {
         super(key);
     }
 
@@ -26,10 +26,7 @@ public class LoaderTypeElement extends CommandElement {
     @Override
     protected Object parseValue(CommandSource commandSource, CommandArgs commandArgs) throws ArgumentParseException {
         String arg = commandArgs.next();
-        if (arg.equalsIgnoreCase("world")) {
-            return arg;
-        }
-        if (arg.equalsIgnoreCase("personal")) {
+        if (arg.equalsIgnoreCase("all")) {
             return arg;
         }
         throw commandArgs.createError(Text.of(new Object[]{TextColors.RED, arg, " is not a valid argument!"}));
@@ -38,8 +35,7 @@ public class LoaderTypeElement extends CommandElement {
     @Override
     public List<String> complete(CommandSource commandSource, CommandArgs commandArgs, CommandContext commandContext) {
         List<String> list = new ArrayList();
-        list.add("world");
-        list.add("personal");
+        list.add("all");
         return list;
     }
 
